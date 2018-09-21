@@ -1,6 +1,15 @@
-<<<<<<< HEAD
-yes
 https://devcenter.heroku.com/articles/cleardb#the-cleardb-shared-mysql-complete-tutorial
-=======
-yes!
->>>>>>> bacdda2bd21416e6146b362000a57672c22f17d8
+
+
+create banner with tabs
+login page
+items
+	-sold
+	-department
+	-Name
+	-Buyer
+	-Description
+	BIDS
+		-seller
+		-price
+Message
