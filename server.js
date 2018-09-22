@@ -18,11 +18,14 @@ var app = express();
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+app.get('/', function (req, res) {
+	res.render('home');
+});
+
 app.get('/shop/*', function (req, res) {
-	var shop = req.url.split("/")[1];
-	res.write(shop);
-	conn.query("SELECT * FROM "+shop, function (err, result) {
-		res.render('home',{items: result });
+	var shop = req.url.split("/")[2];
+	conn.query("SELECT * FROM items WHERE department='"+shop+"';", function (err, result) {
+		res.render('shop',{items: result,department:shop });
 	});
 });
 

@@ -1,0 +1,14 @@
+<h>{{department}}</h>
+<table id="saleItemsCMU">
+	<tr>
+		<th> Item</th>
+		<th> Description</th>
+	</tr>
+	
+	{{#each items}}
+	<tr>	
+		<td>{{this.name}} </td>
+		<td>{{this.description}}</td>
+	</tr>
+	{{/each}}           
+</table>            
