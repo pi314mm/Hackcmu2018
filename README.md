@@ -1,3 +1,7 @@
+->### Sell It To Me HackCMU2018<-
+----------
+##Inspiration
+
 Our inspiration for the project originated when we noticed the large waste of meal blocks. Specifically, freshmen are required to
 purchase a meal plan which often provides more meal blocks than they require. Furthermore,
 many upperclassmen purchase food directly from places where these blocks can be used. This is higly inefficient, and we realized that freshmen could sell upperclassmen
