@@ -13,3 +13,7 @@ items
 		-seller
 		-price
 Message
+Buyer
+	-username
+Seller
+	-password
