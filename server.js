@@ -1,21 +1,30 @@
-'use strict';
+var fs = require('fs');
+var http = require('http');
+var mysql = require('mysql');
 
-const express = require('express');
-const socketIO = require('socket.io');
-const path = require('path');
 
-const PORT = process.env.PORT || 3000;
-const INDEX = path.join(__dirname, 'client.html');
-
-const server = express()
-  .use((req, res) => res.sendFile(INDEX) )
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
-
-const io = socketIO(server);
-
-io.on('connection', (socket) => {
-  console.log('Client connected');
-  socket.on('disconnect', () => console.log('Client disconnected'));
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "user",
+  password: "password",
+  database: "stuff",
+  port: 3306
 });
 
-setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
+
+
+http.createServer(function (req, res) {
+    fs.readFile('client.html', function(err, data) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    con.query("SELECT * FROM items", function (err, result, fields) {
+		if (err) throw err;
+		console.log(result);
+	});
+	res.write(data);
+    res.end();
+  });
+}).listen(8080);
