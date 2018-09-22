@@ -77,7 +77,13 @@ app.get('/logout', function (req, res) {
 
 app.get('/buy',function(req,res){
 	authenticate(req,res,function(){
-		res.render('buy')
+		conn.query("SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'items' AND COLUMN_NAME = 'department';",function(err,dep){
+			shops = dep[0].COLUMN_TYPE.match(/'[^,]*'/g)
+			for (i = 0; i < shops.length; i++) { 
+				shops[i] = shops[i].substring(1,shops[i].length-1);
+			}
+			res.render('buy',{shop:shops})
+		});
 	});
 });
 

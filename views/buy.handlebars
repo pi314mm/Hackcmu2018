@@ -1,9 +1,9 @@
 <div align="center";style="text-align: center; font-size: 12px"> <form method="post">
-<input type="text"; id="name"; name="name"; placeholder="Item name" style="text-align: left;"/>
-<input type="text"; id="description"; name="description"; placeholder="Description" style="text-align: left;"/><br>
-<select name="shop">
+<input type="text"; name="name"; placeholder="Item name" style="text-align: left;"/><br>
+<input type="text"; name="description"; placeholder="Description" style="text-align: left;"/><br>
+<select name="department">
 	{{#each shop}}
-	<option value="{{shop}}">{{shop}}</option>
+	<option value="{{this}}">{{this}}</option>
 	{{/each}}
 </select>
 <input type="submit" value="Add">
