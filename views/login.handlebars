@@ -14,6 +14,7 @@
                 </th>
             </tr>
         </table>
+        
 
 
             <a href=""><div align="center";style="text-align: center; font-size: 12px"> Sign-Up </div></a>               
@@ -22,6 +23,6 @@
 function login(){
 	var username = document.getElementById("username").value;
 	var password = document.getElementById("password").value;
-	POST(username,password,/login)
+	POST('username='+username+',password='+password,/login)
 }
 </script>
