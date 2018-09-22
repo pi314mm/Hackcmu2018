@@ -1,9 +1,6 @@
-var fs = require('fs');
-var http = require('http');
 var mysql = require('mysql');
 
-
-var con = mysql.createConnection({
+var conn = mysql.createconnnection({
   host: "localhost",
   user: "user",
   password: "password",
@@ -11,20 +8,20 @@ var con = mysql.createConnection({
   port: 3306
 });
 
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
+conn.connect();
+
+var express = require('express');
+var exphbs  = require('express-handlebars');
+
+var app = express();
+
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
+app.get('/', function (req, res) {
+	conn.query("SELECT * FROM items", function (err, result) {
+		res.render('home',{name:'banana'});
+	});
 });
 
-
-http.createServer(function (req, res) {
-    fs.readFile('client.html', function(err, data) {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    con.query("SELECT * FROM items", function (err, result, fields) {
-		if (err) throw err;
-		console.log(result);
-	});
-	res.write(data);
-    res.end();
-  });
-}).listen(8080);
+app.listen(8080);

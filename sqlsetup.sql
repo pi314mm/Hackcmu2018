@@ -8,4 +8,4 @@ CREATE TABLE items (
 	PRIMARY KEY(id)
 );
 
-INSERT INTO TABLE items (name) VALUES ('Pizza');
+INSERT INTO items VALUES (NULL, 'Pizza','I want that tartan pizza','CMU');
