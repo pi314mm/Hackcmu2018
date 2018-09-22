@@ -86,9 +86,7 @@ app.get('/shop/*', function (req, res) {
 
 app.post('/shop/*', function (req, res) {
 	authenticate(req,res,function(){
-		console.log(req.body)
 		var s = `INSERT INTO bids VALUES (NULL,${req.body.itemID},${req.session.userid},${req.body.price});`;
-		console.log(s)
 		conn.query(s, function (err, result) {
 			res.redirect(req.url);
 		});
