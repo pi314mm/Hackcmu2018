@@ -1,0 +1,10 @@
+<div align="center";style="text-align: center; font-size: 12px"> <form method="post">
+<input type="text"; id="name"; name="name"; placeholder="Item name" style="text-align: left;"/>
+<input type="text"; id="description"; name="description"; placeholder="Description" style="text-align: left;"/><br>
+<select name="shop">
+	{{#each shop}}
+	<option value="{{shop}}">{{shop}}</option>
+	{{/each}}
+</select>
+<input type="submit" value="Add">
+<form><br>
