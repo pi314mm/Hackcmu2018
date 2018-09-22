@@ -54,7 +54,6 @@ app.get('/login', function (req, res) {
 });
 
 app.post('/login', function (req, res) {
-	console.log(req.body);
 	conn.query("INSERT INTO users VALUES (NULL, '"+req.body.username+"','"+req.body.password+"');",function(err,result){
 		req.session.username = req.body.username;
 		req.session.password = req.body.password;
@@ -66,7 +65,7 @@ app.get('/shop/*', function (req, res) {
 	authenticate(req,res,function(){
 		var shop = req.url.split("/")[2];
 		conn.query("SELECT * FROM items WHERE department='"+shop+"';", function (err, result) {
-			res.render('shop',{items: result,department:shop });
+			res.render('shop',{items: result,department:shop,username:req.session.username });
 		});
 	});
 });
