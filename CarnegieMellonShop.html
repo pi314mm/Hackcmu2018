@@ -8,7 +8,16 @@
     <body >
             <iframe width="100%" height="300px" align="top" src="tab.html" frameborder="0" scrolling="no"></iframe>
             <table id="saleItemsCMU">
-                
+                <tr>
+                    <th> Item</th>
+                    <th> Description</th>
+                </tr>
+                <tr>
+                    {{#each row}}
+                    <td>{{name}} </td>
+                    <td>{{description}}</td>
+                    {{/each}}
+                </tr>                
             </table>            
      </body>
 <script>
