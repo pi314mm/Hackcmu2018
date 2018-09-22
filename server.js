@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 
-var conn = mysql.createconnnection({
+var conn = mysql.createConnection({
   host: "localhost",
   user: "user",
   password: "password",
@@ -20,7 +20,7 @@ app.set('view engine', 'handlebars');
 
 app.get('/', function (req, res) {
 	conn.query("SELECT * FROM items", function (err, result) {
-		res.render('home',{name:'banana'});
+		res.render('home',{items: result});
 	});
 });
 
