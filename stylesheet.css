@@ -2,3 +2,6 @@ html{
     color:black;
     background-color:tan;
 }
+
+#tab-table { }
+.tab {border: 1px solid black; background-color: #95b87f;}
