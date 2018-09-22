@@ -9,3 +9,13 @@ CREATE TABLE items (
 );
 
 INSERT INTO items VALUES (NULL, 'Pizza','I want that tartan pizza','CMU');
+
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+	id INT NOT NULL AUTO_INCREMENT,
+	username VARCHAR(30),
+	password VARCHAR(30),
+	PRIMARY KEY (id)
+);
+
+INSERT INTO users VALUES (NULL, 'admin','password');
