@@ -1,14 +1,25 @@
+
 <h>{{department}}</h>
-<table id="saleItemsCMU">
+<table id="saleItemsCMU" class="table-striped table">
+	<thead>
 	<tr>
-		<th> Item</th>
-		<th> Description</th>
+		<th scope="col"> Item</th>
+		<th scope="col"> Description</th>
 	</tr>
-	
+	 </thead>  <tbody>
+
 	{{#each items}}
-	<tr>	
+	<tr onclick="button()">	
 		<td>{{this.name}} </td>
 		<td>{{this.description}}</td>
 	</tr>
-	{{/each}}           
-</table>            
+	{{/each}}   
+  </tbody>
+        
+</table> 
+
+<script>
+function button(){
+console.log("yay");
+}
+</script>           
