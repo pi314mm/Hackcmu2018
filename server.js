@@ -89,7 +89,7 @@ app.get('/buy',function(req,res){
 
 app.post('/buy',function(req,res){
 	authenticate(req,res,function(){
-		var s = `INSERT INTO items VALUES (NULL,${req.body.name},${req.body.description},${req.body.department});`;
+		var s = `INSERT INTO items VALUES (NULL,'${req.body.name}','${req.body.description}','${req.body.department}');`;
 		conn.query(s,function(err,result){
 			res.redirect(`/shop/${req.body.department}`)
 		});
