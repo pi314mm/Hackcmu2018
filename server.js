@@ -75,6 +75,21 @@ app.get('/logout', function (req, res) {
 	res.redirect('/');
 });
 
+app.get('/buy',function(req,res){
+	authenticate(req,res,function(){
+		res.render('buy')
+	});
+});
+
+app.post('/buy',function(req,res){
+	authenticate(req,res,function(){
+		var s = `INSERT INTO items VALUES (NULL,${req.body.name},${req.body.description},${req.body.department});`;
+		conn.query(s,function(err,result){
+			res.redirect(`/shop/${req.body.department}`)
+		});
+	});
+});
+
 app.get('/shop/*', function (req, res) {
 	authenticate(req,res,function(){
 		var shop = req.url.split("/")[2];
@@ -88,7 +103,6 @@ app.post('/shop/*', function (req, res) {
 	authenticate(req,res,function(){
 		var s = `INSERT INTO bids VALUES (NULL,${req.body.itemID},${req.session.userid},${req.body.price});`;
 		conn.query(s, function (err, result) {
-			
 			res.redirect(req.url);
 		});
 	});
