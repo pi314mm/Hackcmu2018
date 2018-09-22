@@ -1,15 +1,15 @@
 
-<h>{{department}}</h>
-<table id="saleItemsCMU" class="table-striped table">
+<h1 align="center">{{department}}</h1>
+<table id="items" class="table-bordered table table-hover">
 	<thead>
 	<tr>
-		<th scope="col"> Item</th>
-		<th scope="col"> Description</th>
+		<th scope="col" class="text-center"> Item</th>
+		<th scope="col" class="text-center"> Description</th>
 	</tr>
 	 </thead>  <tbody>
 
 	{{#each items}}
-	<tr onclick="button()">	
+	<tr onclick="button()" class="rgba-green-strong">	
 		<td>{{this.name}} </td>
 		<td>{{this.description}}</td>
 	</tr>
