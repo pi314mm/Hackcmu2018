@@ -1,14 +1,25 @@
-<h>{{department}}</h>
-<table id="saleItemsCMU">
+
+<h1 align="center">{{department}}</h1>
+<table id="items" class="table-bordered table table-hover">
+	<thead>
 	<tr>
-		<th> Item</th>
-		<th> Description</th>
+		<th scope="col" class="text-center"> Item</th>
+		<th scope="col" class="text-center"> Description</th>
 	</tr>
-	
+	 </thead>  <tbody>
+
 	{{#each items}}
-	<tr>	
+	<tr onclick="button()" class="rgba-green-strong">	
 		<td>{{this.name}} </td>
 		<td>{{this.description}}</td>
 	</tr>
-	{{/each}}           
-</table>            
+	{{/each}}   
+  </tbody>
+        
+</table> 
+
+<script>
+function button(){
+console.log("yay");
+}
+</script>           
