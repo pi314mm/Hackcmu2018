@@ -17,6 +17,8 @@ var cookieSession = require('cookie-session')
 
 var app = express();
 
+app.use(express.static('images')); 
+
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
