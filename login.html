@@ -40,7 +40,6 @@ function login(){
     time += 24*3600 * 1000;//expire in 24 hours
     now.setTime(time);
     document.cookie = "username="+username+"; password="+password+";expires=" + now.toUTCString() + "; path=/;";
-
 }
 </script>
 </html>
