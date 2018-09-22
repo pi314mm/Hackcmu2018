@@ -1,18 +1,21 @@
-"use strict";
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-var path = require('path');
-const PORT = process.env.PORT || 5000
+'use strict';
 
-app.get('/', function(req, res){
-	  	res.sendFile(path.join(__dirname, '/', 'client.html'));
-		});
+const express = require('express');
+const socketIO = require('socket.io');
+const path = require('path');
 
-io.on('connection', function(socket){
-  console.log('a user connected');
-}
+const PORT = process.env.PORT || 3000;
+const INDEX = path.join(__dirname, 'client.html');
 
-app.listen(PORT, function(){
-	console.log('listening on *:PORT');
+const server = express()
+  .use((req, res) => res.sendFile(INDEX) )
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+const io = socketIO(server);
+
+io.on('connection', (socket) => {
+  console.log('Client connected');
+  socket.on('disconnect', () => console.log('Client disconnected'));
 });
+
+setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
