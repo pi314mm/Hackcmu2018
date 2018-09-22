@@ -17,6 +17,11 @@ var cookieSession = require('cookie-session')
 
 var app = express();
 
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
 app.use(cookieSession({
   name: 'session',
   keys: ['username','password'],
@@ -49,10 +54,11 @@ app.get('/login', function (req, res) {
 });
 
 app.post('/login', function (req, res) {
-	conn.query("INSERT INTO users VALUES (NULL, '"+req.params.username+"','"+req.params.password+"');",function(err,result){
-		req.session.username = req.params.username;
-		req.session.password = req.params.password;
-		res.redirect('home');
+	console.log(req.body);
+	conn.query("INSERT INTO users VALUES (NULL, '"+req.body.username+"','"+req.body.password+"');",function(err,result){
+		req.session.username = req.body.username;
+		req.session.password = req.body.password;
+		res.redirect('/');
 	});
 });
 
