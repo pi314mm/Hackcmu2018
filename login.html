@@ -9,16 +9,16 @@
             <table align="center">
                 <tr>
                         <th>
-                            <input type="text"; name="username"; placeholder="Username" style="text-align: center;"/>
+                            <input type="text"; id="username"; name="username"; placeholder="Username" style="text-align: center;"/>
                         </th>
                 </tr>
                 <tr>
                         <th>
-                            <input type="text"; name="password"; placeholder="Password" style="text-align: center;"/>
+                            <input type="text"; id="password"; name="password"; placeholder="Password" style="text-align: center;"/>
                         </th>
                 </tr><tr>
                 <th>
-                        <button style="text-align: center;"> Login </button>
+                        <button style="text-align: center"; onclick='login()';> Login </button>
                 </th>
             </tr>
         </table>
@@ -26,5 +26,13 @@
 
             <a href=""><div align="center";style="text-align: center; font-size: 12px"> Sign-Up </div></a>               
      </body>
-
+<script>
+function login(){
+	console.log("hi");
+	var username = document.getElementById("username").value;
+	var password = document.getElementById("password").value;
+	console.log(username);
+	console.log(password);
+}
+</script>
 </html>
