@@ -18,9 +18,11 @@ var app = express();
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-app.get('/', function (req, res) {
-	conn.query("SELECT * FROM items", function (err, result) {
-		res.render('home',{items: result});
+app.get('/shop/*', function (req, res) {
+	var shop = req.url.split("/")[1];
+	res.write(shop);
+	conn.query("SELECT * FROM "+shop, function (err, result) {
+		res.render('home',{items: result });
 	});
 });
 
