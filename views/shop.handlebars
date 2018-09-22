@@ -3,15 +3,23 @@
 <table id="items" class="table-bordered table table-hover">
 	<thead>
 	<tr>
-		<th scope="col" class="text-center"> Item</th>
-		<th scope="col" class="text-center"> Description</th>
+		<th scope="col" class="text-center">Item</th>
+		<th scope="col" class="text-center">Description</th>
+		<th scope="col" class="text-center">Your Price</th>
+		<th scope="col" class="text-center">Make Bid</th>
 	</tr>
 	 </thead>  <tbody>
 
 	{{#each items}}
-	<tr onclick="button()" class="rgba-green-strong">	
-		<td>{{this.name}} </td>
-		<td>{{this.description}}</td>
+	
+	<tr onclick="button()" class="rgba-green-strong">
+		<form method="post">
+			<input type="hidden" name="itemID" value="{{this.id}}">
+			<td>{{this.name}} </td>
+			<td>{{this.description}}</td>
+			<td><input type="text" name="price"><td>
+			<input type="submit" value="SELL!">
+		</form>
 	</tr>
 	{{/each}}   
   </tbody>

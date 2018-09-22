@@ -19,3 +19,12 @@ CREATE TABLE users (
 );
 
 INSERT INTO users VALUES (NULL, 'admin','password');
+
+DROP TABLE IF EXISTS bids;
+CREATE TABLE bids (
+	id INT NOT NULL AUTO_INCREMENT,
+	itemID INT,
+	userID INT,
+	price DECIMAL(20,2),
+	PRIMARY KEY (id)
+);
