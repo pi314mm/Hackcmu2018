@@ -27,7 +27,7 @@ function authenticate(req,res,callback) {
 	if(req.session.username ===undefined || req.session.password===undefined){
 		res.redirect('/login');
 	}else{
-		var ans = conn.query("SELECT * FROM users WHERE username = '"+req.session.username+"' AND password = '"+eq.session.password+"';",function(err,result){
+		var ans = conn.query("SELECT * FROM users WHERE username = '"+req.session.username+"' AND password = '"+req.session.password+"';",function(err,result){
 			if (result.length == 0){
 				res.redirect('/login');
 			}else{
@@ -45,7 +45,15 @@ app.get('/', function (req, res) {
 });
 
 app.get('/login', function (req, res) {
-	res.render('home');
+	res.render('login');
+});
+
+app.post('/login', function (req, res) {
+	conn.query("INSERT INTO users VALUES (NULL, '"+req.params.username+"','"+req.params.password+"');",function(err,result){
+		req.session.username = req.params.username;
+		req.session.password = req.params.password;
+		res.redirect('home');
+	});
 });
 
 app.get('/shop/*', function (req, res) {
