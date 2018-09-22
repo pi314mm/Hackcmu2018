@@ -99,7 +99,11 @@ app.post('/buy',function(req,res){
 app.get('/shop/*', function (req, res) {
 	authenticate(req,res,function(){
 		var shop = req.url.split("/")[2];
-		conn.query(`SELECT * FROM items LEFT JOIN (SELECT id AS bidID, itemID, userID, price from bids ORDER BY price ASC LIMIT 1) AS bid ON items.id=bid.itemID WHERE department='${shop}';`, function (err, result) {
+		conn.query(`SELECT items.*,
+					(SELECT price FROM bids WHERE itemID=items.id ORDER BY price ASC LIMIT 1 ) price,
+					(SELECT username FROM users LEFT JOIN bids ON users.id = bids.userID WHERE itemID=items.id ORDER BY price ASC LIMIT 1 ) username
+					FROM items
+					WHERE department='${shop}';`, function (err, result) {
 			res.render('shop',{items: result,department:shop, username:req.session.username });
 		});
 	});
