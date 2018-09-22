@@ -35,8 +35,12 @@ function login(){
 	console.log("hi");
 	var username = document.getElementById("username").value;
 	var password = document.getElementById("password").value;
-	console.log(username);
-	console.log(password);
+	var now = new Date();
+    var time = now.getTime();
+    time += 24*3600 * 1000;//expire in 24 hours
+    now.setTime(time);
+    document.cookie = "username="+username+"; password="+password+";expires=" + now.toUTCString() + "; path=/;";
+
 }
 </script>
 </html>
