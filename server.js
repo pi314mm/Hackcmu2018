@@ -78,7 +78,7 @@ app.get('/logout', function (req, res) {
 app.get('/shop/*', function (req, res) {
 	authenticate(req,res,function(){
 		var shop = req.url.split("/")[2];
-		conn.query(`SELECT * FROM items LEFT JOIN (select * from bids ORDER BY price ASC LIMIT 1) AS bid ON items.id=bid.itemID WHERE department='${shop}';`, function (err, result) {
+		conn.query(`SELECT * FROM items LEFT JOIN (SELECT id AS bidID, itemID, userID, price from bids ORDER BY price ASC LIMIT 1) AS bid ON items.id=bid.itemID WHERE department='${shop}';`, function (err, result) {
 			res.render('shop',{items: result,department:shop, username:req.session.username });
 		});
 	});
@@ -88,6 +88,7 @@ app.post('/shop/*', function (req, res) {
 	authenticate(req,res,function(){
 		var s = `INSERT INTO bids VALUES (NULL,${req.body.itemID},${req.session.userid},${req.body.price});`;
 		conn.query(s, function (err, result) {
+			
 			res.redirect(req.url);
 		});
 	});
