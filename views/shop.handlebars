@@ -6,6 +6,7 @@
 	<tr>
 		<th scope="col" class="text-center">Item</th>
 		<th scope="col" class="text-center">Description</th>
+		<th scope="col" class="text-center">Lowest Bid</th>
 		<th scope="col" class="text-center">Your Price</th>
 		<th scope="col" class="text-center">Make Bid</th>
 	</tr>
@@ -18,8 +19,9 @@
 			<input type="hidden" name="itemID" value="{{this.id}}">
 			<td>{{this.name}} </td>
 			<td>{{this.description}}</td>
-			<td><input type="text" name="price"><td>
-			<input type="submit" value="SELL!">
+			<td>{{this.price}}</td>
+			<td><input type="text" name="price"></td>
+			<td><input type="submit" value="SELL!"></td>
 		</form>
 	</tr>
 	{{/each}}   
